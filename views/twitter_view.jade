@@ -1,0 +1,20 @@
+extends layout
+
+block content
+	nav.navbar.navbar-default
+		div.navbar-header
+			a(href="/twitter").navbar-brand My Twitter Clone
+	div.container
+		div.col-xs-4
+			h3 Enter your tweet
+			form(method="post").myForm
+				div.form-group
+					textarea.tweet.form-control(placeholder="Enter your tweet here")
+				div.form-group
+					button.submit.btn.btn-primary Submit
+			p.remChar 140 characters remaining
+		div.col-xs-1
+		div.col-xs-7
+			h3.text-left My Tweets
+			div.allTweets
+			
