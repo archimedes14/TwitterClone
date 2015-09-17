@@ -1,0 +1,16 @@
+extends layout
+
+block content 
+	.jumbotron
+		.col-xs-4
+		.col-xs-4.text-center
+			h2 Log in using email
+			form(method='post',action='/users/login')
+				.form-group
+					input(type='text', placeholder='Email', name='email').form-control
+				.form-group
+					input(type='password', placeholder='password', name='password').form-control
+				.form-group
+					input(type='submit',value='Log In').btn.btn-primary
+		.col-xs-4
+		.clearfix

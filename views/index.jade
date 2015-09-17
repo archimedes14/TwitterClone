@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	.jumbotron
+		.container.text-center
+			h1 Welcome to Twitter Clone
+			p The very suboptimal clone for the microblogging site, Twitter
+			p: a(href='/auth/facebook').btn.btn-primary Login with facebook
+			p: a(href='/users/signup').btn.btn-primary Signup with Email
+			p: a(href='/users/login').btn.btn-primary Login with Email
