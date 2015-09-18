@@ -24,7 +24,6 @@ router.post('/save', function(req, res) {
 
 	var newTweet = req.body.newTweet; 
 	var user=req.session.usermail;
-    console.log(user + " user hai ");
 	var myTweet = Tweet.build({content:newTweet, owned:user});
 	myTweet.save().then(function() {
 		res.send("1");
