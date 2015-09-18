@@ -5,6 +5,7 @@ mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
 var User = require('../models/user');
 var passport = require('passport');
+var session=require('express-session') ;
 
 
 
@@ -25,6 +26,9 @@ router.post('/signup', function(req, res, next) {
   	else {
   		if (users.length === 0) {
   			var newUser = new User({email:newEmail, password:newPassword}); 
+
+  			newUser.password = newUser.generateHash(newPassword);
+
   			newUser.save(function(err, newUser) {
   				if (err)
   					res.send(err);
@@ -47,6 +51,7 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res, next) {
+req.session.usermail=req.body.email;
 res.redirect('/twitter');
 });
 

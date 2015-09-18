@@ -11,6 +11,9 @@ module.exports = {
       content: {
         type: DataTypes.STRING
       },
+      owned: {
+        type: DataTypes.STRING
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

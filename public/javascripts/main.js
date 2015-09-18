@@ -1,7 +1,7 @@
 (function() {
 	$.get("/tweets/all", {}, function(data) {
 				for(var i in data) 	{
-					$(".allTweets").append("<pre>"+data[i].content+"<br>"+data[i].createdAt+"</pre>");
+					$(".allTweets").append("<pre> User : "+data[i].owned+" tweets <br>"+data[i].content+"<br>"+data[i].createdAt+"</pre>");
 				}
 			}, "json");
 })(); 
@@ -54,7 +54,7 @@ $(".submit").on("click", function(e) {
 			$.get("/tweets/all", {}, function(data) {
 				$(".allTweets").empty();
 				for(var i in data) 	{
-					$(".allTweets").append("<pre>"+data[i].content+"<br>"+data[i].createdAt+"</pre>");
+					$(".allTweets").append("<pre> User : "+data[i].owned+" tweets <br>"+data[i].content+"<br>"+data[i].createdAt+"</pre>");
 				}
 			}, "json");
 		}
