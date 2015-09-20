@@ -48,7 +48,8 @@ $(".tweet").on("keyup", function(e) {
 $(".submit").on("click", function(e) {
 	e.preventDefault();
 	var newTweet = $(".tweet").val(); 
-
+	$(".searchTweets").val("");
+	
 	$.post("/tweets/save", {"newTweet":newTweet}, function(callback) {
 		if (callback==="1") {
 			$.get("/tweets/all", {}, function(data) {
@@ -63,4 +64,17 @@ $(".submit").on("click", function(e) {
 
 	$(".tweet").val("");
 	$(".remChar").text("140 characters remaining.");	
+});
+
+
+$(".search").on("click", function(e) {
+	e.preventDefault();
+	var keyword = $(".searchText").val(); 
+	console.log(" main "+keyword);
+	$.post("/tweets/search", {"keyword":keyword}, function(data) {
+				$(".searchTweets").empty();
+				for(var i in data) 	{
+					$(".searchTweets").append("<pre> User : "+data[i].owned+" tweets <br>"+data[i].content+"<br>"+data[i].createdAt+"</pre>");
+				}
+			}, "json");
 });

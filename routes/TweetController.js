@@ -31,4 +31,24 @@ router.post('/save', function(req, res) {
 }); 
 	
 
+router.post('/search', function(req, res) {
+	
+var keyword = req.body.keyword; 
+	
+console.log(keyword);
+	Tweet.findAll({ where: { content: { $like: '%'+keyword+'%'  } }}).then(function(callback) {
+		var str = []; 
+		for (var i in callback) {
+			var temp = {}; 
+			temp.content = callback[i].content;
+			temp.owned=callback[i].owned;
+			temp.createdAt = callback[i].createdAt;
+
+			str.push(temp); 
+		}
+		res.send(str);
+	});
+});
+
+
 module.exports = router;

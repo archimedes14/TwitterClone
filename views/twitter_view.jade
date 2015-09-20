@@ -13,6 +13,13 @@ block content
 				div.form-group
 					button.submit.btn.btn-primary Submit
 			p.remChar 140 characters remaining
+			h3.text-left Search all Tweets
+			h5 Search all Tweets
+			form.form-inline(method="post").searchForm
+			div.form-group
+			input.searchText.form-control(type='text', placeholder='Enter Keyword')
+			button.search.btn.btn-default.btn-sm(type='submit') Search
+			div.searchTweets
 		div.col-xs-1
 		div.col-xs-7
 			h3.text-left My Tweets
